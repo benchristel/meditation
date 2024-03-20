@@ -2,11 +2,13 @@ import {h} from "preact"
 import "./app.css"
 
 export function App() {
-  return <h1>Hello from Preact!</h1>
+  return (
+    <div class="centering-frame">
+      <div style={{width: 400, textAlign: "center", padding: "16px"}}>
+        <div>
+          <button>Begin</button>
+        </div>
+      </div>
+    </div>
+  )
 }
-
-test("App", {
-  "renders a greeting"() {
-    expect(App().props.children, equals, "Hello from Preact!")
-  },
-})
