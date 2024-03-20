@@ -122,6 +122,11 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.19.12.tgz#c57c8afbb4054a3ab8317591a0b7320360b444ae"
   integrity sha512-T1QyPSDCyMXaO3pzBkF96E8xMkiRYbUEZADd29SyPGabqxMViNoii+NcK7eWJAEoU6RZyEm5lVSIjTmcdoB9HA==
 
+"@regosen/gapless-5@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@regosen/gapless-5/-/gapless-5-1.5.0.tgz#5e87bb4b7f9b5371eca7f4ba1838fcb89924ff34"
+  integrity sha512-a93ruTYyiV6TXHUKTQVL4mGMCJ3Lrc+PV5VuwfxmznpaTWC3+noWQX2zFzHFWN68X7B/oLUDBemetf0Uwp2WJg==
+
 "@rollup/plugin-inject@^4.0.4":
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-inject/-/plugin-inject-4.0.4.tgz#fbeee66e9a700782c4f65c8b0edbafe58678fbc2"
