@@ -1,25 +1,21 @@
-import {PiecewiseFunction} from "./gp/piecewise-function"
+import {MeditationProgram} from "./meditation-program"
 
 interface ConstructorParams {
   ringBell?: () => unknown
   setBackgroundVolume?: (fraction: number) => unknown
+  program?: MeditationProgram
 }
 
 export class Meditation {
   private ringBell: () => unknown
   private setBackgroundVolume: (fraction: number) => unknown
   private time = 0
-  private volumeFunction: PiecewiseFunction
+  private program: MeditationProgram
 
   constructor(params: ConstructorParams) {
     this.ringBell = params.ringBell ?? noop
     this.setBackgroundVolume = params.setBackgroundVolume ?? noop
-    this.volumeFunction = new PiecewiseFunction({
-      points: [
-        {x: 0, y: 0},
-        {x: 10_000, y: 1},
-      ],
-    })
+    this.program = params.program ?? defaultProgram
   }
 
   begin() {
@@ -29,8 +25,12 @@ export class Meditation {
 
   tick(millis: number) {
     this.time += millis
-    this.setBackgroundVolume(this.volumeFunction.at(this.time))
+    this.setBackgroundVolume(this.program.volumeAt(this.time))
   }
 }
+
+const defaultProgram = new MeditationProgram({
+  volumeFunction: {at: () => 0},
+})
 
 const noop = () => {}
