@@ -12,11 +12,12 @@ export interface Point {
 
 export function createPiecewiseFunction(
   params: ConstructorParams,
-): PiecewiseFunction {
-  return new PiecewiseFunction(params)
+): (x: number) => number {
+  const piecewiseFunction = new PiecewiseFunction(params)
+  return (x) => piecewiseFunction.at(x)
 }
 
-export class PiecewiseFunction {
+class PiecewiseFunction {
   private points: Point[]
 
   constructor(params: ConstructorParams) {
