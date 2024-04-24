@@ -10,6 +10,12 @@ export interface Point {
   y: number
 }
 
+export function createPiecewiseFunction(
+  params: ConstructorParams,
+): PiecewiseFunction {
+  return new PiecewiseFunction(params)
+}
+
 export class PiecewiseFunction {
   private points: Point[]
 
