@@ -18,7 +18,7 @@ test("a Meditation", {
     const meditation = new Meditation({
       setBackgroundVolume: (v) => (backgroundVolume = v),
       program: new MeditationProgram({
-        volumeFunction: {
+        backgroundVolume: {
           at(time) {
             return time + 7
           },

@@ -30,7 +30,7 @@ export class Meditation {
 }
 
 const defaultProgram = new MeditationProgram({
-  volumeFunction: {at: () => 0},
+  backgroundVolume: {at: () => 0},
 })
 
 const noop = () => {}

@@ -1,5 +1,5 @@
 interface ConstructorParams {
-  volumeFunction: NumericFunction
+  backgroundVolume: NumericFunction
 }
 
 interface NumericFunction {
@@ -7,13 +7,13 @@ interface NumericFunction {
 }
 
 export class MeditationProgram {
-  volumeFunction: NumericFunction
+  backgroundVolume: NumericFunction
 
   constructor(params: ConstructorParams) {
-    this.volumeFunction = params.volumeFunction
+    this.backgroundVolume = params.backgroundVolume
   }
 
   volumeAt(time: number): number {
-    return this.volumeFunction.at(time)
+    return this.backgroundVolume.at(time)
   }
 }
