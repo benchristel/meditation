@@ -4,13 +4,13 @@ import "./app.css"
 import {Gapless5} from "@regosen/gapless-5"
 
 // @ts-expect-error - cannot find module fountain.ogg
-import fountainAudioUrl from "./fountain.ogg"
+import fountainAudioUrl from "../fountain.ogg"
 // @ts-expect-error - cannot find module bell.ogg
-import bellAudioUrl from "./bell.ogg"
-import {Meditation} from "./meditation"
-import {MeditationProgram} from "./meditation-program"
-import {createPiecewiseFunction} from "./gp/piecewise-function"
-import {Clock} from "./gp/clock"
+import bellAudioUrl from "../bell.ogg"
+import {Meditation} from "../meditation"
+import {MeditationProgram} from "../meditation-program"
+import {createPiecewiseFunction} from "../gp/piecewise-function"
+import {Clock} from "../gp/clock"
 
 const second = 1000
 const minute = 60 * second
@@ -28,7 +28,7 @@ const bellPlayer = new Gapless5({
   tracks: [bellAudioUrl],
 })
 
-export function App() {
+export function Main() {
   const [running, setRunning] = useState(false)
   return (
     <div class="centering-frame">
@@ -51,7 +51,7 @@ export function App() {
 
 function runMeditation() {
   const meditation = new Meditation({
-    setBackgroundVolume: (v) =>
+    setBackgroundVolume: (v: number) =>
       backgroundNoisePlayer.setVolume(v * backgroundNoiseMaxVolume),
     program: new MeditationProgram({
       backgroundVolume: createPiecewiseFunction({

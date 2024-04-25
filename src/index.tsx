@@ -1,7 +1,7 @@
 import {render, h} from "preact"
-import {App} from "./App"
+import {Main} from "./app/Main"
 import "./test-results"
 import "./reset.css"
 import "./global-types"
 
-render(<App />, document.getElementById("app")!)
+render(<Main />, document.getElementById("app")!)
