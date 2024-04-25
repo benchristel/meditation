@@ -4,9 +4,9 @@ import "./app.css"
 import {Gapless5} from "@regosen/gapless-5"
 
 // @ts-expect-error - cannot find module fountain.ogg
-import fountainAudioUrl from "../fountain.ogg"
+import fountainAudioUrl from "../assets/fountain.ogg"
 // @ts-expect-error - cannot find module bell.ogg
-import bellAudioUrl from "../bell.ogg"
+import bellAudioUrl from "../assets/bell.ogg"
 import {Meditation} from "../meditation"
 import {MeditationProgram} from "../meditation-program"
 import {createPiecewiseFunction} from "../gp/piecewise-function"
