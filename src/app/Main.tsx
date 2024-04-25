@@ -57,9 +57,9 @@ function runMeditation() {
       backgroundVolume: createPiecewiseFunction({
         points: [
           {x: 0, y: 0},
-          {x: 10_000, y: 1},
-          {x: 1800_000, y: 1},
-          {x: 1820_000, y: 0},
+          {x: 10 * second, y: 1},
+          {x: 30 * minute, y: 1},
+          {x: 30 * minute + 20 * second, y: 0},
         ],
       }),
     }),
