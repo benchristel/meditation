@@ -7,8 +7,8 @@ import {Gapless5} from "@regosen/gapless-5"
 import fountainAudioUrl from "../assets/fountain.ogg"
 // @ts-expect-error - cannot find module bell.ogg
 import bellAudioUrl from "../assets/bell.ogg"
-import {Meditation} from "../meditation"
-import {MeditationProgram} from "../meditation-program"
+import {Meditation} from "../domain/meditation"
+import {MeditationProgram} from "../domain/meditation-program"
 import {createPiecewiseFunction} from "../gp/piecewise-function"
 import {Clock} from "../gp/clock"
 
