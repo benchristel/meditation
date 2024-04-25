@@ -38,33 +38,7 @@ export function App() {
             disabled={running}
             onClick={() => {
               setRunning(true)
-              const meditation = new Meditation({
-                setBackgroundVolume: (v) =>
-                  backgroundNoisePlayer.setVolume(
-                    v * backgroundNoiseMaxVolume,
-                  ),
-                program: new MeditationProgram({
-                  backgroundVolume: createPiecewiseFunction({
-                    points: [
-                      {x: 0, y: 0},
-                      {x: 10_000, y: 1},
-                      {x: 1800_000, y: 1},
-                      {x: 1820_000, y: 0},
-                    ],
-                  }),
-                }),
-              })
-
-              meditation.begin()
-              backgroundNoisePlayer.play()
-              bellPlayer.play()
-
-              const clock = new Clock(Date.now)
-              setInterval(() => meditation.tick(clock.tick()), 100)
-              setInterval(
-                () => playFromBeginning(bellPlayer),
-                bellIntervalMillis,
-              )
+              runMeditation()
             }}
           >
             Begin
@@ -73,6 +47,31 @@ export function App() {
       </div>
     </div>
   )
+}
+
+function runMeditation() {
+  const meditation = new Meditation({
+    setBackgroundVolume: (v) =>
+      backgroundNoisePlayer.setVolume(v * backgroundNoiseMaxVolume),
+    program: new MeditationProgram({
+      backgroundVolume: createPiecewiseFunction({
+        points: [
+          {x: 0, y: 0},
+          {x: 10_000, y: 1},
+          {x: 1800_000, y: 1},
+          {x: 1820_000, y: 0},
+        ],
+      }),
+    }),
+  })
+
+  meditation.begin()
+  backgroundNoisePlayer.play()
+  bellPlayer.play()
+
+  const clock = new Clock(Date.now)
+  setInterval(() => meditation.tick(clock.tick()), 100)
+  setInterval(() => playFromBeginning(bellPlayer), bellIntervalMillis)
 }
 
 function playFromBeginning(player: Gapless5) {
