@@ -23,11 +23,11 @@ test("a Meditation", {
     })
 
     meditation.begin()
-    meditation.tick(0)
+    meditation.markTime(0)
 
     expect(backgroundVolume, is, 7)
 
-    meditation.tick(100)
+    meditation.markTime(100)
 
     expect(backgroundVolume, is, 107)
   },

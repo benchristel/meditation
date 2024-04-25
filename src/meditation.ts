@@ -23,7 +23,7 @@ export class Meditation {
     this.setBackgroundVolume(0)
   }
 
-  tick(millis: number) {
+  markTime(millis: number) {
     this.time += millis
     this.setBackgroundVolume(this.program.volumeAt(this.time))
   }

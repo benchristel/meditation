@@ -70,7 +70,7 @@ function runMeditation() {
   bellPlayer.play()
 
   const clock = new Clock(Date.now)
-  setInterval(() => meditation.tick(clock.tick()), 100)
+  setInterval(() => meditation.markTime(clock.tick()), 100)
   setInterval(() => playFromBeginning(bellPlayer), bellIntervalMillis)
 }
 
