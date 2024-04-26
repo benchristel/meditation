@@ -1,9 +1,3 @@
-html,
-body {
-  background: #f0ede0;
-  overflow: hidden;
-}
-
 .centering-frame {
   display: flex;
   flex-direction: column;

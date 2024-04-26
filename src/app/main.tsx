@@ -1,6 +1,5 @@
 import {h} from "preact"
 import {useState} from "preact/hooks"
-import "./app.css"
 import {Gapless5} from "@regosen/gapless-5"
 
 // @ts-expect-error - cannot find module fountain.ogg
@@ -11,6 +10,7 @@ import {Meditation} from "../domain/meditation"
 import {MeditationProgram} from "../domain/meditation-program"
 import {createPiecewiseFunction} from "../gp/piecewise-function"
 import {Clock} from "../gp/clock"
+import {View} from "./view"
 
 const second = 1000
 const minute = 60 * second
@@ -31,21 +31,13 @@ const bellPlayer = new Gapless5({
 export function Main() {
   const [running, setRunning] = useState(false)
   return (
-    <div class="centering-frame">
-      <div style={{width: 400, textAlign: "center", padding: "16px"}}>
-        <div>
-          <button
-            disabled={running}
-            onClick={() => {
-              setRunning(true)
-              runMeditation()
-            }}
-          >
-            Begin
-          </button>
-        </div>
-      </div>
-    </div>
+    <View
+      running={running}
+      onBegin={() => {
+        setRunning(true)
+        runMeditation()
+      }}
+    />
   )
 }
 
