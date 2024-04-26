@@ -9,9 +9,13 @@ export interface ViewProps {
 export function View(props: ViewProps) {
   return (
     <div class="centering-frame">
-      <div style={{width: 400, textAlign: "center", padding: "16px"}}>
+      <div class="panel">
         <div>
-          <button disabled={props.running} onClick={props.onBegin}>
+          <button
+            class="raised"
+            disabled={props.running}
+            onClick={props.onBegin}
+          >
             Begin
           </button>
         </div>
