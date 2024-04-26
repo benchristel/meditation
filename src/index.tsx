@@ -1,5 +1,5 @@
 import {render, h} from "preact"
-import {Main} from "./app/Main"
+import {Main} from "./app/main"
 import "./test-results"
 import "./reset.css"
 import "./global-types"
