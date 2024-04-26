@@ -32,7 +32,7 @@ export function Main() {
   const [running, setRunning] = useState(false)
   return (
     <View
-      running={running}
+      beginButtonDisabled={running}
       onBegin={() => {
         setRunning(true)
         runMeditation()

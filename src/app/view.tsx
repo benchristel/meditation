@@ -2,7 +2,7 @@ import {h} from "preact"
 import "./style.css"
 
 export interface ViewProps {
-  running: boolean
+  beginButtonDisabled: boolean
   onBegin: () => unknown
 }
 
@@ -13,7 +13,7 @@ export function View(props: ViewProps) {
         <div>
           <button
             class="raised"
-            disabled={props.running}
+            disabled={props.beginButtonDisabled}
             onClick={props.onBegin}
           >
             Begin
