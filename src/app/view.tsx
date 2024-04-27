@@ -10,15 +10,13 @@ export function View(props: ViewProps) {
   return (
     <div class="centering-frame">
       <div class="panel">
-        <div>
-          <button
-            class="raised"
-            disabled={props.beginButtonDisabled}
-            onClick={props.onBegin}
-          >
-            Begin
-          </button>
-        </div>
+        <button
+          class="raised"
+          disabled={props.beginButtonDisabled}
+          onClick={props.onBegin}
+        >
+          Begin
+        </button>
       </div>
     </div>
   )
