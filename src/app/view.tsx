@@ -9,7 +9,7 @@ import {
 } from "./constants"
 
 export interface ViewProps {
-  beginButtonDisabled: boolean
+  inputsDisabled: boolean
   durationInputValue: number
   onDurationInputChanged: (value: number) => unknown
   onBegin: () => unknown
@@ -28,6 +28,7 @@ export function View(props: ViewProps) {
             <input
               id={durationId}
               type="range"
+              disabled={props.inputsDisabled}
               min={MIN_MEDITATION_DURATION_MILLIS}
               max={MAX_MEDITATION_DURATION_MILLIS}
               step={MEDITATION_DURATION_STEP_MILLIS}
@@ -42,7 +43,7 @@ export function View(props: ViewProps) {
         <Spacer size="48px" />
         <button
           class="raised"
-          disabled={props.beginButtonDisabled}
+          disabled={props.inputsDisabled}
           onClick={props.onBegin}
         >
           Begin

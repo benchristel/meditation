@@ -3,11 +3,11 @@ import {begin, init, setDuration, update} from "./model"
 test("begin", {
   "disables the begin button"() {
     let state = init()
-    expect(state.beginButtonDisabled, is, false)
+    expect(state.inputsDisabled, is, false)
 
     state = update(state, begin)
 
-    expect(state.beginButtonDisabled, is, true)
+    expect(state.inputsDisabled, is, true)
   },
 
   "does not mutate the previous state"() {
@@ -15,7 +15,7 @@ test("begin", {
 
     update(state, begin)
 
-    expect(state.beginButtonDisabled, is, false)
+    expect(state.inputsDisabled, is, false)
   },
 })
 

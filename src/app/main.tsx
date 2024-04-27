@@ -33,7 +33,7 @@ export function Main() {
   const [state, dispatch] = useReducer(update, null, init)
   return (
     <View
-      beginButtonDisabled={state.beginButtonDisabled}
+      inputsDisabled={state.inputsDisabled}
       onBegin={() => {
         dispatch(begin)
         runMeditation(state.duration)

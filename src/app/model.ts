@@ -4,12 +4,12 @@ import {DEFAULT_MEDITATION_DURATION_MILLIS} from "./constants"
 export type Action = (model: Model) => Model
 
 export type Model = {
-  beginButtonDisabled: boolean
+  inputsDisabled: boolean
   duration: number
 }
 
 export const begin: Action = (model: Model) => {
-  return {...model, beginButtonDisabled: true}
+  return {...model, inputsDisabled: true}
 }
 
 export const setDuration = curry(
@@ -20,7 +20,7 @@ export const setDuration = curry(
 export function init(): Model {
   return {
     duration: DEFAULT_MEDITATION_DURATION_MILLIS,
-    beginButtonDisabled: false,
+    inputsDisabled: false,
   }
 }
 
