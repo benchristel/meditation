@@ -2,9 +2,16 @@ import {h} from "preact"
 import Spacer from "../gp/spacer"
 import {useRandomId} from "../gp/use-random-id"
 import "./style.css"
+import {
+  MAX_MEDITATION_DURATION_MILLIS,
+  MEDITATION_DURATION_STEP_MILLIS,
+  MIN_MEDITATION_DURATION_MILLIS,
+} from "./constants"
 
 export interface ViewProps {
   beginButtonDisabled: boolean
+  durationInputValue: number
+  onDurationInputChanged: (value: number) => unknown
   onBegin: () => unknown
 }
 
@@ -17,14 +24,20 @@ export function View(props: ViewProps) {
         <Spacer size="16px" />
         <div class="labeled-input">
           <label htmlFor={durationId}>Duration</label>
-          <input
-            id={durationId}
-            type="range"
-            min={300_000}
-            max={7200_000}
-            step={300_000}
-            value={1800_000}
-          />
+          <div style={{display: "flex", flexDirection: "column"}}>
+            <input
+              id={durationId}
+              type="range"
+              min={MIN_MEDITATION_DURATION_MILLIS}
+              max={MAX_MEDITATION_DURATION_MILLIS}
+              step={MEDITATION_DURATION_STEP_MILLIS}
+              value={props.durationInputValue}
+              onInput={(e) =>
+                props.onDurationInputChanged(+e.currentTarget.value)
+              }
+            />
+            <div>{props.durationInputValue / 60_000}m</div>
+          </div>
         </div>
         <Spacer size="48px" />
         <button

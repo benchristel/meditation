@@ -11,7 +11,7 @@ import {MeditationProgram} from "../domain/meditation-program"
 import {createPiecewiseFunction} from "../gp/piecewise-function"
 import {Clock} from "../gp/clock"
 import {View} from "./view"
-import {begin, init, update} from "./model"
+import {begin, init, setDuration, update} from "./model"
 
 const second = 1000
 const minute = 60 * second
@@ -36,13 +36,15 @@ export function Main() {
       beginButtonDisabled={state.beginButtonDisabled}
       onBegin={() => {
         dispatch(begin)
-        runMeditation()
+        runMeditation(state.duration)
       }}
+      durationInputValue={state.duration}
+      onDurationInputChanged={(v) => dispatch(setDuration(v))}
     />
   )
 }
 
-function runMeditation() {
+function runMeditation(duration: number) {
   const meditation = new Meditation({
     setBackgroundVolume: (v: number) =>
       backgroundNoisePlayer.setVolume(v * backgroundNoiseMaxVolume),
@@ -51,8 +53,8 @@ function runMeditation() {
         points: [
           {x: 0, y: 0},
           {x: 10 * second, y: 1},
-          {x: 30 * minute, y: 1},
-          {x: 30 * minute + 20 * second, y: 0},
+          {x: duration, y: 1},
+          {x: duration + 20 * second, y: 0},
         ],
       }),
     }),

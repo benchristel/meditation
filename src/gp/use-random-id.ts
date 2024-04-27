@@ -1,4 +1,5 @@
 import {useRef} from "preact/hooks"
+import {isGreaterThan} from "./predicates"
 
 export function useRandomId(prefix: string): string {
   const ref = useRef(`${prefix}-${randomInt()}`)
@@ -24,7 +25,3 @@ test("randomInt", {
     expect(sum, isGreaterThan, 100_000_000_000)
   },
 })
-
-function isGreaterThan(reference: number, x: number) {
-  return x > reference
-}
