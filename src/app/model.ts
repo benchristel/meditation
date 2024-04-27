@@ -14,6 +14,7 @@ export const begin: Action = (model: Model) => {
 
 export const setDuration = curry(
   (duration: number, model: Model): Model => ({...model, duration}),
+  "setDuration",
 )
 
 export function init(): Model {
