@@ -42,6 +42,7 @@ export function View(props: ViewProps) {
         </div>
         <Spacer size="48px" />
         <button
+          autofocus
           class="raised"
           disabled={props.inputsDisabled}
           onClick={props.onBegin}
