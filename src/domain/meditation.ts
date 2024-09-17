@@ -1,4 +1,7 @@
+import {intDiv} from "../gp/math"
 import {MeditationProgram} from "./meditation-program"
+
+const bellPeriod = 300_000
 
 interface ConstructorParams {
   ringBell?: () => unknown
@@ -24,8 +27,14 @@ export class Meditation {
   }
 
   markTime(millis: number) {
-    this.time += millis
-    this.setBackgroundVolume(this.program.volumeAt(this.time))
+    const newTime = this.time + millis
+    if (
+      intDiv(this.time, bellPeriod) !== intDiv(newTime, bellPeriod)
+    ) {
+      this.ringBell()
+    }
+    this.time = newTime
+    this.setBackgroundVolume(this.program.volumeAt(newTime))
   }
 }
 

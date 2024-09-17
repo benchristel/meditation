@@ -14,10 +14,8 @@ import {View} from "./view"
 import {begin, init, setDuration, update} from "./model"
 
 const second = 1000
-const minute = 60 * second
 
 // configuration
-const bellIntervalMillis = 5 * minute
 const backgroundNoiseMaxVolume = 0.5
 
 const backgroundNoisePlayer = new Gapless5({
@@ -46,7 +44,7 @@ export function Main() {
 
 function runMeditation(duration: number) {
   const meditation = new Meditation({
-    ringBell: () => bellPlayer.play(),
+    ringBell: () => playFromBeginning(bellPlayer),
     setBackgroundVolume: (v: number) =>
       backgroundNoisePlayer.setVolume(v * backgroundNoiseMaxVolume),
     program: new MeditationProgram({
@@ -66,7 +64,6 @@ function runMeditation(duration: number) {
 
   const clock = new Clock(Date.now)
   setInterval(() => meditation.markTime(clock.tick()), 100)
-  setInterval(() => playFromBeginning(bellPlayer), bellIntervalMillis)
 }
 
 function playFromBeginning(player: Gapless5) {

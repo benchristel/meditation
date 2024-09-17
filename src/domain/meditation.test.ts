@@ -31,4 +31,47 @@ test("a Meditation", {
 
     expect(backgroundVolume, is, 107)
   },
+
+  "rings a second bell at 5 minutes"() {
+    let rings = 0
+    const meditation = new Meditation({ringBell: () => rings++})
+
+    meditation.begin()
+    meditation.markTime(299_000)
+
+    expect(rings, is, 1)
+
+    meditation.markTime(1_000)
+
+    expect(rings, is, 2)
+  },
+
+  "rings only one bell at 5 minutes"() {
+    let rings = 0
+    const meditation = new Meditation({ringBell: () => rings++})
+
+    meditation.begin()
+    meditation.markTime(299_000)
+
+    expect(rings, is, 1)
+
+    meditation.markTime(1_000)
+    meditation.markTime(1_000)
+
+    expect(rings, is, 2)
+  },
+
+  "rings a third bell at 10 minutes"() {
+    let rings = 0
+    const meditation = new Meditation({ringBell: () => rings++})
+
+    meditation.begin()
+    meditation.markTime(599_000)
+
+    expect(rings, is, 2)
+
+    meditation.markTime(1_000)
+
+    expect(rings, is, 3)
+  },
 })
