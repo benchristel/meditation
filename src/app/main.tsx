@@ -46,6 +46,7 @@ export function Main() {
 
 function runMeditation(duration: number) {
   const meditation = new Meditation({
+    ringBell: () => bellPlayer.play(),
     setBackgroundVolume: (v: number) =>
       backgroundNoisePlayer.setVolume(v * backgroundNoiseMaxVolume),
     program: new MeditationProgram({
@@ -62,7 +63,6 @@ function runMeditation(duration: number) {
 
   meditation.begin()
   backgroundNoisePlayer.play()
-  bellPlayer.play()
 
   const clock = new Clock(Date.now)
   setInterval(() => meditation.markTime(clock.tick()), 100)
